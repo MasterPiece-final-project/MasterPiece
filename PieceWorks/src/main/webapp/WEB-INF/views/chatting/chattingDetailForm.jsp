@@ -112,7 +112,8 @@
 				"sendTime":Now,
 				"nickName":name,
 				"chatNo":"${chatNo}",
-				"chatWriter":"${loginUser.email}"
+				"chatWriter":"${loginUser.email}",
+					"reprofile":"${loginUser.reProfile}"
 		};
 		let jsonData = JSON.stringify(userData);
 		wsocket.send(jsonData);
@@ -123,7 +124,8 @@
 		const data = {
 				"nickName" : receive[0],
 				"sendTime" : receive[1],
-				"message" : receive[2]
+				"message" : receive[2],
+				"reProfile":receive[3]
 		};
 		console.log(data)
 			appendMessage(data);
@@ -149,7 +151,8 @@
 				"sendTime":Now,
 				"nickName":name,
 				"chatNo":"${chatNo}",
-				"chatWriter": "${loginUser.email}"
+				"chatWriter": "${loginUser.email}",
+				"reprofile":"${loginUser.reProfile}"
 		};
 		let jsonData = JSON.stringify(userData);
 		wsocket.send(jsonData);
@@ -167,7 +170,7 @@
 		if(data.nickName==name){
 			$('.msgArea').append("<div class='outgoing_msg'> <div class='sent_msg'> <p>" + data.message+"</p> <span class='time_date'>" +NowTime+"</span> </div>");
 		}else{
-			$('.msgArea').append("<div class='incoming_msg'> <div class='incoming_msg_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div> <div class='received_msg'> <div class='received_withd_msg'><p id='nickNameText'>"+data.nickName +"</p> <p>"+ data.message+"</p> <span class='time_date'>" +NowTime+"</span></div> </div> </div>");
+			$('.msgArea').append("<div class='incoming_msg'> <div class='incoming_msg_img'> <img src='resource/profileFiles/+"${data.reprofile }+"' alt='sunil'> </div> <div class='received_msg'> <div class='received_withd_msg'><p id='nickNameText'>"+data.nickName +"</p> <p>"+ data.message+"</p> <span class='time_date'>" +NowTime+"</span></div> </div> </div>");
 		}
 		var chatAreaHeight = $(".msg_history").height();
 		var maxScroll = $(".msgArea").height() - chatAreaHeight;

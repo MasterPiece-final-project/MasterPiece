@@ -107,7 +107,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler{
 			System.out.println(chatMessage);
 			
 			//메세지 내용을 담는다.
-			TextMessage textMessage = new TextMessage(chatMessage.getNickName() + "," + chatMessage.getSendTime() + "," + chatMessage.getChatMessage());
+			TextMessage textMessage = new TextMessage(chatMessage.getNickName() + "," + chatMessage.getSendTime() + "," + chatMessage.getChatMessage() + "," + chatMessage.getReprofile());
 			System.out.println("보내는 메세지 : " + textMessage);
 			//들어온 채팅방roomId에 속해있는 sessionId사람들에게만 message 전송
 			for (WebSocketSession sess : RoomList.get(roomId)) {
